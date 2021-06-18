@@ -1,7 +1,7 @@
 /**
  * A generic dynamic array implementation
  *
- * @author William Fiset, william.alexandre.fiset@gmail.com
+ * @author Rahul S Deshpande
  */
 package com.rahulografy.dsalgokotlin.datastructures.dynamicarray
 
