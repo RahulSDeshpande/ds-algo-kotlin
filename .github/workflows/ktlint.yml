@@ -2,7 +2,13 @@
 # 'ktlint' Style Guide
 
 name: Run ktlint
-on: [ push,pull_request ]
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
 jobs:
   ktlint:
     name: Check Code Quality
