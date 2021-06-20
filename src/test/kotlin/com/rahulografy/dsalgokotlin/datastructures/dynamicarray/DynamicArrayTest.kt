@@ -91,8 +91,8 @@ class DynamicArrayTest {
     @Test
     fun testRemoving() {
         val list = DynamicArray<String?>()
-        val strs = arrayOf("a", "b", "c", "d", "e", null, "g", "h")
-        for (s in strs) list.add(s)
+        val stringList = arrayOf("a", "b", "c", "d", "e", null, "g", "h")
+        for (s in stringList) list.add(s)
         var ret = list.remove("c")
         Truth.assertThat(ret).isTrue()
         ret = list.remove("c")
@@ -114,8 +114,8 @@ class DynamicArrayTest {
     @Test
     fun testRemoving2() {
         val list = DynamicArray<String>()
-        val strs = arrayOf("a", "b", "c", "d")
-        for (s in strs) list.add(s)
+        val stringList = arrayOf("a", "b", "c", "d")
+        for (s in stringList) list.add(s)
         Truth.assertThat(list.remove("a")).isTrue()
         Truth.assertThat(list.remove("b")).isTrue()
         Truth.assertThat(list.remove("c")).isTrue()
@@ -129,17 +129,17 @@ class DynamicArrayTest {
     @Test
     fun testIndexOfNullElement() {
         val list = DynamicArray<String?>()
-        val strs = arrayOf("a", "b", null, "d")
-        for (s in strs) list.add(s)
+        val stringList = arrayOf("a", "b", null, "d")
+        for (s in stringList) list.add(s)
         Truth.assertThat(list.indexOf(null)).isEqualTo(2)
     }
 
     @Test
     fun testAddingElements() {
         val list = DynamicArray<Int>()
-        val elems = intArrayOf(1, 2, 3, 4, 5, 6, 7)
-        for (i in elems.indices) list.add(elems[i])
-        for (i in elems.indices) Truth.assertThat(list[i]!!.toInt()).isEqualTo(elems[i])
+        val elements = intArrayOf(1, 2, 3, 4, 5, 6, 7)
+        for (i in elements.indices) list.add(elements[i])
+        for (i in elements.indices) Truth.assertThat(list[i]).isEqualTo(elements[i])
     }
 
     @Test
@@ -182,11 +182,11 @@ class DynamicArrayTest {
     @Test
     fun testSize() {
         val list = DynamicArray<Int?>()
-        val elems = arrayOf(-76, 45, 66, 3, null, 54, 33)
+        val elements = arrayOf(-76, 45, 66, 3, null, 54, 33)
         var i = 0
         var sz = 1
-        while (i < elems.size) {
-            list.add(elems[i])
+        while (i < elements.size) {
+            list.add(elements[i])
             Truth.assertThat(list.size()).isEqualTo(sz)
             i++
             sz++
