@@ -1,24 +1,23 @@
 # This workflow checks that the code in the repo is formatted according to the
 # 'ktlint' Style Guide
 
-name: ktlint
+name: Run ktlint
 
 on:
+  push:
+    branches: [ master ]
   pull_request:
-    paths:
-      - .github/workflows/ktlint.yml
-      - 'src/**/*.kt'
-      - '**.kts'
+    branches: [ master ]
 
 jobs:
   ktlint:
+    name: Check Code Quality
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v2
-      - run: brew install ktlint
-      - name: run ktlint
-        run: |
-          ktlint --reporter=checkstyle,output=build/ktlint-report.xml
-      - uses: yutailang0119/action-ktlint@v1.0.0
+      - name: Clone PR
+        uses: actions/checkout@v2
         with:
-          xml_path: build/*.xml
+          fetch-depth: 1
+      - name: Run Ktlint
+        uses: lucasnlm/ktlint-action@master
