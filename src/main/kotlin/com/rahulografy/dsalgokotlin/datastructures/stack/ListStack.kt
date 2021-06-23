@@ -15,7 +15,7 @@ class ListStack<T> : Iterable<T>, Stack<T> {
     /**
      * Create an empty stack
      */
-    constructor() {}
+    constructor()
 
     /**
      * Create a Stack with an initial element
