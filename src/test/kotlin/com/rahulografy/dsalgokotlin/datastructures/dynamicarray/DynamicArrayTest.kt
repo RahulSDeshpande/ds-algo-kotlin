@@ -184,12 +184,12 @@ class DynamicArrayTest {
         val list = DynamicArray<Int?>()
         val elements = arrayOf(-76, 45, 66, 3, null, 54, 33)
         var i = 0
-        var sz = 1
+        var size = 1
         while (i < elements.size) {
             list.add(elements[i])
-            Truth.assertThat(list.size()).isEqualTo(sz)
+            Truth.assertThat(list.size()).isEqualTo(size)
             i++
-            sz++
+            size++
         }
     }
 }

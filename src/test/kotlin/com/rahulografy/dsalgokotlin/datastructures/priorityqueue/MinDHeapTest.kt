@@ -189,8 +189,8 @@ class MinDHeapTest {
 
     for (int i = 0; i < LOOPS; i++) {
 
-      int sz = i;
-      List <Integer> randNums = genRandList(sz);
+      int size = i;
+      List <Integer> randNums = genRandList(size);
       PriorityQueue <Integer> pq1 = new PriorityQueue<>();
       PQueue <Integer> pq2 = new PQueue<>();
 
@@ -226,8 +226,8 @@ class MinDHeapTest {
 
     for (int i = 0; i < LOOPS; i++) {
 
-      int sz = i;
-      List <Integer> randNums = genRandList(sz);
+      int size = i;
+      List <Integer> randNums = genRandList(size);
       PriorityQueue <Integer> pq1 = new PriorityQueue<>();
       PQueue <Integer> pq2 = new PQueue<>();
 
@@ -266,12 +266,12 @@ class MinDHeapTest {
     PriorityQueue <Integer> PQ = new PriorityQueue<>();
     PQueue <Integer> pq = new PQueue<>();
 
-    for (int sz : SZs) {
+    for (int size : SZs) {
 
       pq.clear();
       PQ.clear();
 
-      List <Integer> nums = genRandList(sz);
+      List <Integer> nums = genRandList(size);
       for (int n : nums) {
         pq.add(n);
         PQ.add(n);
@@ -279,7 +279,7 @@ class MinDHeapTest {
 
       Collections.shuffle(nums);
 
-      for (int i = 0; i < sz/2; i++) {
+      for (int i = 0; i < size/2; i++) {
 
         // Sometimes add a new number into the Pqueue
         if (0.25 < Math.random()) {
@@ -307,23 +307,23 @@ class MinDHeapTest {
 
   }
   */
-        fun genRandArray(sz: Int): Array<Int?> {
-            val lst = arrayOfNulls<Int>(sz)
-            for (i in 0 until sz) lst[i] = (Math.random() * MAX_SZ).toInt()
+        fun genRandArray(size: Int): Array<Int?> {
+            val lst = arrayOfNulls<Int>(size)
+            for (i in 0 until size) lst[i] = (Math.random() * MAX_SZ).toInt()
             return lst
         }
 
         // Generate a list of random numbers
-        fun genRandList(sz: Int): List<Int> {
-            val lst: MutableList<Int> = ArrayList(sz)
-            for (i in 0 until sz) lst.add((Math.random() * MAX_SZ).toInt())
+        fun genRandList(size: Int): List<Int> {
+            val lst: MutableList<Int> = ArrayList(size)
+            for (i in 0 until size) lst.add((Math.random() * MAX_SZ).toInt())
             return lst
         }
 
         // Generate a list of unique random numbers
-        fun genUniqueRandList(sz: Int): List<Int?> {
-            val lst: MutableList<Int?> = ArrayList(sz)
-            for (i in 0 until sz) lst.add(i)
+        fun genUniqueRandList(size: Int): List<Int?> {
+            val lst: MutableList<Int?> = ArrayList(size)
+            for (i in 0 until size) lst.add(i)
             Collections.shuffle(lst)
             return lst
         }
