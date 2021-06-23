@@ -17,7 +17,7 @@ package com.rahulografy.dsalgokotlin.datastructures.priorityqueue
 open class MinIndexedDHeap<T : Comparable<T>?>(degree: Int, maxSize: Int) {
 
     // Current number of elements in the heap.
-    private var sz = 0
+    private var size = 0
 
     // Maximum number of elements in the heap.
     private val N: Int
@@ -30,11 +30,11 @@ open class MinIndexedDHeap<T : Comparable<T>?>(degree: Int, maxSize: Int) {
     private val parent: IntArray
 
     // The Position Map (pm) maps Key Indexes (ki) to where the position of that
-    // key is represented in the priority queue in the domain [0, sz).
+    // key is represented in the priority queue in the domain [0, size).
     val pm: IntArray
 
     // The Inverse Map (im) stores the indexes of the keys in the range
-    // [0, sz) which make up the priority queue. It should be noted that
+    // [0, size) which make up the priority queue. It should be noted that
     // 'im' and 'pm' are inverses of each other, so: pm[im[i]] = im[pm[i]] = i
     val im: IntArray
 
@@ -42,11 +42,11 @@ open class MinIndexedDHeap<T : Comparable<T>?>(degree: Int, maxSize: Int) {
     // that this array is indexed by the key indexes (aka 'ki').
     val values: Array<Any?>
     fun size(): Int {
-        return sz
+        return size
     }
 
     val isEmpty: Boolean
-        get() = sz == 0
+        get() = size == 0
 
     operator fun contains(ki: Int): Boolean {
         keyInBoundsOrThrow(ki)
@@ -78,10 +78,10 @@ open class MinIndexedDHeap<T : Comparable<T>?>(degree: Int, maxSize: Int) {
     fun insert(ki: Int, value: T) {
         require(!contains(ki)) { "index already exists; received: $ki" }
         valueNotNullOrThrow(value)
-        pm[ki] = sz
-        im[sz] = ki
+        pm[ki] = size
+        im[size] = ki
         values[ki] = value
-        swim(sz++)
+        swim(size++)
     }
 
     fun valueOf(ki: Int): T? {
@@ -92,13 +92,13 @@ open class MinIndexedDHeap<T : Comparable<T>?>(degree: Int, maxSize: Int) {
     fun delete(ki: Int): T? {
         keyExistsOrThrow(ki)
         val i = pm[ki]
-        swap(i, --sz)
+        swap(i, --size)
         sink(i)
         swim(i)
         val value = values[ki] as T?
         values[ki] = null
         pm[ki] = -1
-        im[sz] = -1
+        im[size] = -1
         return value
     }
 
@@ -154,7 +154,7 @@ open class MinIndexedDHeap<T : Comparable<T>?>(degree: Int, maxSize: Int) {
         var i = i
         var index = -1
         val from = child[i]
-        val to = Math.min(sz, from + D)
+        val to = Math.min(size, from + D)
         for (j in from until to) if (less(j, i)) {
             i = j
             index = i
@@ -180,8 +180,8 @@ open class MinIndexedDHeap<T : Comparable<T>?>(degree: Int, maxSize: Int) {
     }
 
     override fun toString(): String {
-        val lst: MutableList<Int> = ArrayList(sz)
-        for (i in 0 until sz) lst.add(im[i])
+        val lst: MutableList<Int> = ArrayList(size)
+        for (i in 0 until size) lst.add(im[i])
         return lst.toString()
     }
 
@@ -215,7 +215,7 @@ open class MinIndexedDHeap<T : Comparable<T>?>(degree: Int, maxSize: Int) {
 
     private fun isMinHeap(i: Int): Boolean {
         val from = child[i]
-        val to = Math.min(sz, from + D)
+        val to = Math.min(size, from + D)
         for (j in from until to) {
             if (!less(i, j)) return false
             if (!isMinHeap(j)) return false

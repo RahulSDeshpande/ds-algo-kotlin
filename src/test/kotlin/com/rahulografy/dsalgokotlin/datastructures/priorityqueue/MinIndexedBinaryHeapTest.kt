@@ -267,9 +267,9 @@ class MinIndexedBinaryHeapTest {
         }
 
         // Generate a list of unique random numbers
-        fun genUniqueRandList(sz: Int): List<Int> {
-            val lst: MutableList<Int> = ArrayList(sz)
-            for (i in 0 until sz) lst.add(i)
+        fun genUniqueRandList(size: Int): List<Int> {
+            val lst: MutableList<Int> = ArrayList(size)
+            for (i in 0 until size) lst.add(i)
             Collections.shuffle(lst)
             return lst
         }

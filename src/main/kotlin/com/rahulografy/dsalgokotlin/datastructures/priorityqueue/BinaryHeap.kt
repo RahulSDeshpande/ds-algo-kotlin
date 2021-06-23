@@ -13,8 +13,8 @@ class BinaryHeap<T : Comparable<T>?> {
     // Construct a priority queue with an initial capacity
     // Construct and initially empty priority queue
     @JvmOverloads
-    constructor(sz: Int = 1) {
-        heap = ArrayList(sz)
+    constructor(size: Int = 1) {
+        heap = ArrayList(size)
     }
 
     // Construct a priority queue using heapify in O(n) time, a great explanation can be found at:

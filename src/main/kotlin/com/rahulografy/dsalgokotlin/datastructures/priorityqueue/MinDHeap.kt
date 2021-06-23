@@ -12,23 +12,23 @@ class MinDHeap<T : Comparable<T>>(degree: Int, maxNodes: Int) {
     private val heap: Array<T?>
     private val d: Int
     private val n: Int
-    private var sz = 0
+    private var size = 0
     private val child: IntArray
     private val parent: IntArray
 
     // Returns the number of elements currently present inside the PQ
     fun size(): Int {
-        return sz
+        return size
     }
 
     // Returns true/false depending on whether the PQ is empty
     val isEmpty: Boolean
-        get() = sz == 0
+        get() = size == 0
 
     // Clears all the elements inside the PQ
     fun clear() {
         Arrays.fill(heap, null)
-        sz = 0
+        size = 0
     }
 
     // Returns the element at the top of the PQ or null if the PQ is empty
@@ -41,8 +41,8 @@ class MinDHeap<T : Comparable<T>>(degree: Int, maxNodes: Int) {
     fun poll(): T? {
         if (isEmpty) return null
         val root = heap[0]
-        heap[0] = heap[--sz]
-        heap[sz] = null
+        heap[0] = heap[--size]
+        heap[size] = null
         sink(0)
         return root
     }
@@ -50,9 +50,9 @@ class MinDHeap<T : Comparable<T>>(degree: Int, maxNodes: Int) {
     // Adds a none null element to the priority queue
     fun add(elem: T?) {
         requireNotNull(elem) { "No null elements please :)" }
-        heap[sz] = elem
-        swim(sz)
-        sz++
+        heap[size] = elem
+        swim(size)
+        size++
     }
 
     private fun sink(i: Int) {
@@ -78,7 +78,7 @@ class MinDHeap<T : Comparable<T>>(degree: Int, maxNodes: Int) {
         var i = i
         var index = -1
         val from = child[i]
-        val to = Math.min(sz, from + d)
+        val to = Math.min(size, from + d)
         for (j in from until to) if (less(j, i)) {
             i = j
             index = i

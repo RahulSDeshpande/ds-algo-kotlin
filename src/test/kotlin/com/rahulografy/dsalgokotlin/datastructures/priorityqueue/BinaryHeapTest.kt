@@ -206,16 +206,16 @@ class BinaryHeapTest {
         val SZs = genUniqueRandList(LOOPS)
         val PQ = PriorityQueue<Int>()
         val pq = BinaryHeap<Int>()
-        for (sz in SZs) {
+        for (size in SZs) {
             pq.clear()
             PQ.clear()
-            val nums = genRandList(sz)
+            val nums = genRandList(size)
             for (n in nums) {
                 pq.add(n)
                 PQ.add(n)
             }
             Collections.shuffle(nums)
-            for (i in 0 until sz / 2) {
+            for (i in 0 until size / 2) {
 
                 // Sometimes add a new number into the BinaryHeap
                 if (0.25 < Math.random()) {
@@ -239,23 +239,23 @@ class BinaryHeapTest {
     companion object {
         const val LOOPS = 100
         const val MAX_SZ = 100
-        fun genRandArray(sz: Int): Array<Int?> {
-            val lst = arrayOfNulls<Int>(sz)
-            for (i in 0 until sz) lst[i] = (Math.random() * MAX_SZ).toInt()
+        fun genRandArray(size: Int): Array<Int?> {
+            val lst = arrayOfNulls<Int>(size)
+            for (i in 0 until size) lst[i] = (Math.random() * MAX_SZ).toInt()
             return lst
         }
 
         // Generate a list of random numbers
-        fun genRandList(sz: Int): List<Int> {
-            val lst: MutableList<Int> = ArrayList(sz)
-            for (i in 0 until sz) lst.add((Math.random() * MAX_SZ).toInt())
+        fun genRandList(size: Int): List<Int> {
+            val lst: MutableList<Int> = ArrayList(size)
+            for (i in 0 until size) lst.add((Math.random() * MAX_SZ).toInt())
             return lst
         }
 
         // Generate a list of unique random numbers
-        fun genUniqueRandList(sz: Int): List<Int> {
-            val lst: MutableList<Int> = ArrayList(sz)
-            for (i in 0 until sz) lst.add(i)
+        fun genUniqueRandList(size: Int): List<Int> {
+            val lst: MutableList<Int> = ArrayList(size)
+            for (i in 0 until size) lst.add(i)
             Collections.shuffle(lst)
             return lst
         }
