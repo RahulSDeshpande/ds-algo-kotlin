@@ -92,7 +92,7 @@ class IntArray : Iterable<Int?> {
     // Perform a binary search on this array to find an element in O(log(n)) time
     // Make sure this array is sorted! Returns a value < 0 if item is not found
     fun binarySearch(key: Int): Int {
-        // if (index < 0) index = -index - 1; // If not found this will tell you where to insert
+        // if (index < 0) index = -index - 1 // If not found this will tell you where to insert
         return Arrays.binarySearch(arr, 0, len, key)
     }
 

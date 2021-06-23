@@ -80,8 +80,8 @@ class IntStack(maxSize: Int) : Stack<Int> {
             println("IntStack Time: " + (end - start) / 1e9)
 
             // ArrayDeque times at around 1.438 seconds
-            //    java.util.ArrayDeque<Integer> arrayDeque = new java.util.ArrayDeque<>();
-            //    java.util.Stack<Integer> arrayDeque = new java.util.Stack<>();
+            //    java.util.ArrayDeque<Integer> arrayDeque = new java.util.ArrayDeque<>()
+            //    java.util.Stack<Integer> arrayDeque = new java.util.Stack<>()
             val arrayDeque = ArrayDeque<Int>(n) // strangely the
             // ArrayQueue is slower when you give it an initial capacity.
             start = System.nanoTime()
