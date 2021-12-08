@@ -1,4 +1,4 @@
-package com.rahulografy.dsalgokotlin.sabbartask
+package com.rahulografy.dsalgokotlin.problems
 
 fun main() {
     // println(checkPalindrome(string = "Anna")) // -> annA
@@ -12,7 +12,7 @@ fun main() {
 
     // replace2ndChar("")
 
-    val words = listOf("ate", "eat", "tan", "tea", "bat", "nat")
+    val words = listOf("atee", "eeat", "tan", "teea", "bat", "nat")
 
     // groupAnagramWords(words)
 
@@ -122,6 +122,6 @@ fun groupAnagrams(strings: List<String>) {
         resultingMap[keyMap] = (resultingMap[keyMap] ?: listOf()) + str
     }
 
-    print(resultingMap)
+    println(resultingMap)
     print(resultingMap.values.toList())
 }
