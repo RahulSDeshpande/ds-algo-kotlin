@@ -32,6 +32,7 @@ dependencies {
 
     ktlint("com.pinterest:ktlint:0.41.0")
     // ktlint(project(":custom-ktlint-ruleset")) // in case of custom ruleset
+    implementation(kotlin("stdlib-jdk8"))
 }
 
 tasks.test {
@@ -63,4 +64,12 @@ val ktlintFormat by tasks.creating(JavaExec::class) {
     classpath = ktlint
     main = "com.pinterest.ktlint.Main"
     args = listOf("-F", "src/**/*.kt")
+}
+val compileKotlin: KotlinCompile by tasks
+compileKotlin.kotlinOptions {
+    jvmTarget = "1.8"
+}
+val compileTestKotlin: KotlinCompile by tasks
+compileTestKotlin.kotlinOptions {
+    jvmTarget = "1.8"
 }
